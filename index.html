@@ -1,0 +1,844 @@
+<html>
+<head>
+<link rel="stylesheet" href="attempt2.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<link rel="shortcut icon" href="assets/logo.png"><link><title>Airbnb</title>
+
+<link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="vendor/css/bootstrap-grid.min.css">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+<!--Navbar Styling-->
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #FFFFFF;
+  padding: 50px 10px;
+  transition: 0.4s;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 99;
+}
+
+#navbar a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+#Logo {
+    float: left;
+
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#navbar-right {
+  float: center;
+  position: relative;
+
+}
+
+@media screen and (max-width: 580px) {
+  #navbar {
+    padding: 20px 10px !important;
+  }
+  #navbar a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  #navbar-right {
+    float: none;
+  }
+}
+
+
+<!--SearchBox Styling-->
+
+input {
+	outline: none;
+	border: none;
+    background: transparent;
+}
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+
+
+input[type=search] {
+	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+	
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #66CC75;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+
+/* Demo 2 */
+#demo-2 input[type=search] {
+	width: 15px;
+	padding-left: 10px;
+	color: transparent;
+	cursor: pointer;
+}
+#demo-2 input[type=search]:hover {
+	background-color: #fff;
+}
+#demo-2 input[type=search]:focus {
+	width: 130px;
+	padding-left: 32px;
+	color: #000;
+	background-color: #fff;
+	cursor: auto;
+}
+#demo-2 input:-moz-placeholder {
+	color: transparent;
+}
+#demo-2 input::-webkit-input-placeholder {
+	color: transparent;}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+<!--Navbar Body-->
+
+<div class="container-fluid">
+
+<div id="navbar" style="background-color:transparent"> 
+<div class="row"> 
+
+<div class = "col-sm-8 col-md-6 col-lg-2" style="padding-right:25px;">
+<img src="assets/logo_red.png" href="#default" id="Logo" width="120" height = "35" >
+</div>
+
+<div class = "col-sm-8 col-md-6 col-lg-7">
+
+<div class = "row">
+
+<div class = "col" >
+  <button style = "border-radius: 25px; border-color: transparent; 
+  background-color: transparent;  color:white;">
+  <h5>Location</h5>
+  </button>
+  </div>
+
+<div class = "col">
+<input type="text" id = "Check In" value="Check In" href="#" name="datefilter"
+style="font-size:16px; background-color:transparent; border-color:transparent;  color: white;" />
+</div>
+
+<div class = "col">
+<input type="text" id = "Check Out" value="Check Out" href="#" name="datefilter" 
+style="font-size:16px; background-color:transparent; border-color:transparent;  color: white;"/>
+<!--a href="#" id = "Check Out">Check Out</a-->
+</div>
+
+  <div class = "col" >
+  <button style = "border-radius: 25px; border-color: transparent; 
+  background-color: transparent;  color:white;">
+  <h5>Guests</h5>
+  </button>
+  </div>
+  
+</div>
+
+</div>
+
+<div class="col-sm-8 col-md-6 col-lg-3">
+
+<div id="navbar-right">
+  <div class = "row">
+  
+  <div class = "col" >
+  <button style = "border-radius: 25px; border-color: transparent; 
+  background-color: transparent;  color:white;" id="Host">
+  <h5>Become a host</h5>
+  </button>
+  </div>
+  
+  <div class = "col" align="center" style="padding:10px">
+  <i class="fas fa-globe"></i>
+  </div>
+  
+  <div class="col">
+  <button style = "border-radius: 25px; border-color: transparent" data-toggle="modal" data-target="#exampleModal">
+  <i class="fas fa-bars"></i> &nbsp <i class="fas fa-user-circle" align="center" ></i>
+  </button>
+  </div>
+  
+  
+  
+ 
+ 
+<!-- Modal starts-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <!--button type="button" class="close" data-dismiss="modal">&times;</button-->
+        <div> 
+		<h5><b>Sign Up</b></h5>
+		</div>
+		<div>
+		<h5>Sign In</h5>
+        </div>
+		</div>
+		
+		
+		<div class="modal-body">
+        <div> 
+		<h5>Host your home</h5>
+		</div>
+		<div>
+		<h5>Host an experience</h5>
+        </div>
+		<div>
+		<h5>Help</h5>
+        </div>
+		</div>
+		
+      
+    </div>
+  </div>
+</div>
+<!--Modal  ends--> 
+  
+  
+  
+  
+  
+  
+  </div>
+  </div>
+
+</div>
+
+
+</div>
+
+<div class = "row">
+<div class = "col" align="center">
+<input type="search"id="Search" placeholder="Start your search">
+</div>
+</div>
+
+</div>
+
+
+</div>
+
+<!--Navbar Body Ends-->
+
+<div class="row" style = "background-color:transparet">
+<div class="col-sm-12 col-md-12 col-lg-12">
+<div class ="container-fluid" >
+<img src="assets/background_image.jpg" width="100%">
+<div style = "position: absolute;top:40%; left: 50%;
+
+
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 5px;
+padding-bottom: 5px;
+  
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;">
+<h4>
+Not sure where to go? Perfect.<br><br>
+</h4>
+</div>
+
+
+
+<button style = "position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  border-color: transparent;
+  cursor: pointer;
+  border-radius: 40px;
+  text-align: center;">
+  <span style ="color:#74139B" ><h5>I am flex</span><span style ="color:#9C099A">ible</h5></span></button>
+</div>
+</div>
+</div>
+
+
+<div class="row" style = "margin:20px; padding:20px;">
+<div class="col-sm-12 col-md-6 col-lg-4">
+<h1>Live Anywhere</h1>
+</div>
+</div>
+
+
+<!--div class="container-fluid"-->
+<div class="row" style = "margin:20px; padding:20px;">
+  	<div class="col-sm-12 col-md-6 col-lg-4" style = "padding:20px;">
+	<div class="row">
+    <!--img src="assets/image1.jpg" width="400" height="400" style = "border-radius: 10px;"-->
+	<img src="assets/image1.jpg" width="100%" style = "border-radius: 10px;">
+
+	</div>
+	<div class="row">
+	<div class="col">
+	<h5><b>Outdoor Stays</b></h5>
+	</div>
+	</div>
+	</div>
+	<!---->
+  	<div class="col-sm-12 col-md-6 col-lg-4" style = "padding:20px;">
+	<div class="row">
+    <img src="assets/image2.jpg" width="100%" style = "border-radius: 10px;">
+	</div>
+	<div class="row">
+	<div class = "col">
+	<h5><b>Unique Stays</b></h5>
+	</div>
+	</div>
+	</div>
+	<!---->
+
+  	<div class="col-sm-12 col-md-6 col-lg-4" style = "padding:20px;" >
+	<div class="row">
+    <img src="assets/image3.jpg" width="100%" style = "border-radius: 10px;">
+	</div>
+  	<div class="row">
+	<div class = "col">
+	<h5><b>Entire Home</b></h5>
+	</div>
+	</div>
+	</div>
+</div>
+<!--/div-->
+<!--START OF THE WIDE PICTURE IN THE MIDDLE-->
+
+<div class="row" style = "margin:20px; padding:20px;">
+	<div class="col-sm-12 col-md-6 col-lg-6" style = "background-color: #000000; border-radius: 10px;">
+	<!--div class="container" style="position:relative;"-->
+	<div class = "row">
+	<div class = "col">
+	<h1 style="color:white; text-align: justify; text-justify: inter-word;">Try Hosting</h1>
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "col">
+	<h5 style="color:white; text-align: justify; text-justify: inter-word;">Earn extra income and unlock new<br>opportunities by sharing your space.</h5>
+	</div>
+	</div>	
+	</div>
+  	<div class="col-sm-12 col-md-6 col-lg-6">
+	<!--div class="container" style="position:relative;"-->
+	<img src="assets/wide_image.png" style="width:100%; border-radius: 10px;"> 
+	</div>
+</div>
+
+
+<!--END OF THE WIDE PICTURE IN THE MIDDLE-->
+
+
+
+<div class="row" style = "margin:20px; padding:20px;">
+<div class="col-sm-12 col-md-6 col-lg-6">
+<h1>Discover things to do</h1>
+</div>
+</div>
+<!--div class="container-fluid"-->
+<div class="row" style = "margin:20px; padding:20px;">
+  	<div class="col-sm-12 col-md-6 col-lg-4" style = "padding:20px;">
+	<div class="row">
+    <img src="assets/image4.jpg" width="100%" style = "border-radius: 10px;">
+	</div>
+	<div class="row">
+	<div class="col">
+	<h4><b>Experiences</b></h4>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col">
+	<h5><b>Find unforgettable activities near you.</b></h5>
+	</div>
+	</div>
+	</div>
+	
+	
+  	<div class="col-sm-12 col-md-6 col-lg-4" style = "padding:20px;">
+	<div class="row">
+    <img src="assets/image5.jpg" width="100%" style = "border-radius: 10px;">
+	</div>
+	<div class="row">
+	<div class = "col">
+	<h4><b>Online Experiences</b></h4>
+	</div>
+	</div>
+	<div class="row">
+	<div class = "col">
+	<h5><b>Live, interactive activities led by Hosts.</b></h3>
+	</div>
+	</div>
+	</div>
+	
+	
+  	<div class="col-sm-12 col-md-6 col-lg-4" style = "padding:20px;">
+	<div class="row">
+    <img src="assets/image6.jpg" width="100%" style = "border-radius: 10px;">
+	</div>
+  	<div class="row">
+	<h4><b>Featured collection: Wanderlust</b></h4>
+	</div>
+	<div class="row">
+	<h5><b>Travel from home with Online Experiences.</b></h5>
+	</div>
+	</div>
+</div>
+<!--/div-->
+
+<!--Text in bottom-->
+
+<div class="row" style = "margin:20px; padding:20px; background-color:#F9F7F9" >
+  	<div class="col-sm-12 col-md-6 col-lg-3" style = "padding:20px;">
+	
+	<div class="row">
+	<div class="col">
+	<h6><b>ABOUT</b></h6>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>How Airbnb works</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Newsroom</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Airbnb 2021</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Investors</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Airbnb Plus</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Airbnb Luxe</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>HotelTonight</a>
+	</div>
+	</div>
+	
+	
+	<div class="row">
+	<div class="col">
+	<a>Airbnb for Work</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Made possible by Hosts</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Careers</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Founders' Letter</a>
+	</div>
+	</div>
+	
+	</div>
+	
+	
+  	<div class="col-sm-12 col-md-6 col-lg-3" style = "padding:20px;">
+		<div class="row">
+	<div class="col">
+	<h6><b>COMMUNITY</b></h6>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Diversity & Belonging</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Against Discrimination</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Accessibility</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Investors</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Airbnb Associates</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Host Afghan refugees</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Guest Referrals</a>
+	</div>
+	</div>
+	
+	
+	<div class="row">
+	<div class="col">
+	<a>Gift cards</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Made possible by Hosts</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Airbnb.org</a>
+	</div>
+	</div>
+	
+	
+	</div>
+	
+	
+  	<div class="col-sm-12 col-md-6 col-lg-3" style = "padding:20px;">
+	<div class="row">
+	<div class="col">
+	<h6><b>HOST</b></h6>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Host your home</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Host an Online Experience</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Host an Experience</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Responsible hosting</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Resource Center</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Community Center</a>
+	</div>
+	</div>
+	
+	
+	</div>
+	
+	<div class="col-sm-12 col-md-6 col-lg-3" style = "padding:20px;">
+	<div class="row">
+	<div class="col">
+	<h6><b>SUPPORT</b></h6>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Our COVID-19 Response</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Help Center</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Cancellation options</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Neighborhood Support</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Airbnb Plus</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Trust & Safety</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>HotelTonight</a>
+	</div>
+	</div>
+	
+	
+	<div class="row">
+	<div class="col">
+	<a>Airbnb for Work</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Made possible by Hosts</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Careers</a>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col">
+	<a>Founders' Letter</a>
+	</div>
+	</div>
+	
+	</div>
+</div>
+
+<div class = "row" style="padding:10px; margin:10px">
+	<div class="col-sm-12 col-md-6 col-lg-6" style="float:left;">
+	
+	© 2021 Airbnb, Inc.  &nbsp
+	.<a>Privacy</a>	&nbsp
+	.<a>Terms</a>	&nbsp
+	.<a>Sitemap</a> &nbsp
+	</div>
+	
+	<div class="col-sm-12 col-md-6 col-lg-3" >
+	</div>
+	<div class="col-sm-12 col-md-6 col-lg-3" style="float:right;">
+	
+	<a><u>English US</u></a>&nbsp
+	<a><u>USD</u></a>&nbsp &nbsp &nbsp
+	<i class="fab fa-facebook-f"></i> &nbsp 
+	<i class="fab fa-twitter"></i> &nbsp 
+	<i class="fab fa-instagram"></i> &nbsp 
+	
+	</div>
+	
+	</div>
+</div>
+
+<script>
+// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("navbar").style.padding = "30px 10px";
+	document.getElementById("navbar").style.backgroundColor  = "white";	
+	
+    document.getElementById("Search").style.fontSize = "25px";
+    document.getElementById("Search").style.width = "300px";
+
+	document.getElementById("Location").style.fontSize = "0px";
+	document.getElementById("Check In").style.fontSize = "0px";
+	document.getElementById("Check In").style.padding = "0px 0px";
+
+	document.getElementById("Check Out").style.fontSize = "0px";
+	document.getElementById("Guests").style.fontSize = "0px";
+	<!--document.getElementById("Logo").style.height = "0px";-->
+	document.getElementById("Logo").src = "assets/logo_red.png";
+	document.getElementById("Logo").style.height = "35px"
+	document.getElementById("Logo").style.width = "120px"
+	document.getElementById("Host").style.color = "black"
+
+  } else {
+    document.getElementById("navbar").style.padding = "50px 10px";
+	document.getElementById("navbar").style.backgroundColor  = "transparent";	
+
+    document.getElementById("Search").style.fontSize = "20px";
+	document.getElementById("Search").style.width = "50px";
+
+	document.getElementById("Location").style.fontSize = "14px";
+	document.getElementById("Check In").style.fontSize = "14px";
+	document.getElementById("Check Out").style.fontSize = "14px";
+	document.getElementById("Guests").style.fontSize = "14px";
+	document.getElementById("Logo").style.fontSize = "14px";
+	document.getElementById("Host").style.color = "white"
+
+	document.getElementById("Logo").style.height = "35px"
+	document.getElementById("Logo").style.width = "120px"
+  }
+}
+</script>
+
+<script type="text/javascript">
+$(function() {
+
+  $('input[name="datefilter"]').daterangepicker({
+      autoUpdateInput: false,
+      locale: {
+          cancelLabel: 'Clear'
+      }
+  });
+
+  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+  });
+
+  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+  });
+
+});
+</script>
+
+</body>
+
+</html>
